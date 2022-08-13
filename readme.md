@@ -1,20 +1,11 @@
-# VsChromium
+# VsChromium Lite
 
-VsChromium is a Visual Studio Extension containing a collection of tools
-useful for editing, navigating and debugging code.
+VsChromium Lite is a Visual Studio Extension based off of the original
+[VsChromium](https://github.com/chromium/vs-chromium) extension. It takes
+the more general purpose extension developed for the [Chormium Project](http://www.chromium.org/)
+and slims it down to focus on search features.
 
-VsChromium was originally developed to help when contributing code to the
-[Chromium project](http:/www.chromium.org), but has evolved over time to become
-a more general purpose extension that can be useful for any project.
-
-Amongst other things, VsChromium offers full text search engine, a fast and
-scalable alternative to the built-in "Find in Files" feature that can provide
-search results in less than 0.1 seconds for 100,000+ files.
-
-See the [Feature summary](http://chromium.github.io/vs-chromium/#feature-summary)
-and [Getting started](http://chromium.github.io/vs-chromium/#getting-started)
-sections for more information.
-
-[Documentation](http://chromium.github.io/vs-chromium)
-
-[Installation instructions](http://chromium.github.io/vs-chromium/#installation)
+To quote the original project:
+> Amongst other things, VsChromium offers full text search engine, a fast and
+> scalable alternative to the built-in "Find in Files" feature that can provide
+> search results in less than 0.1 seconds for 100,000+ files.
