@@ -22,9 +22,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(BuildRoot)src\Core\Core.csproj">
-      <Project>{6F70C76F-5A3A-4657-A073-075A08555BAD}</Project>
-      <Name>VsChromium.Core</Name>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{6f70c76f-5a3a-4657-a073-075a08555bad}</Project>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

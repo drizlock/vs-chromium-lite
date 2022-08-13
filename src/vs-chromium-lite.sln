@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{6F70C76F-5A3A-4657-A073-075A08555BAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsChromium", "VsChromium\VsChromium.csproj", "{8ED06AA3-93DF-48FE-97C0-F516E99FDB32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsChromiumLite", "VsChromium\VsChromiumLite.csproj", "{8ED06AA3-93DF-48FE-97C0-F516E99FDB32}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C0710B1A-5DFB-4BE2-B6C6-F02382BC15F0} = {C0710B1A-5DFB-4BE2-B6C6-F02382BC15F0}
 	EndProjectSection
@@ -82,6 +82,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C75BE34-7560-45E7-BBDC-CC0EACC59005}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = vs-chromium.vsmdi

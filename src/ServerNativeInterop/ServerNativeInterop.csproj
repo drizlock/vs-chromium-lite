@@ -39,9 +39,9 @@
     <Compile Include="TextRange.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(BuildRoot)src\Core\Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{6f70c76f-5a3a-4657-a073-075a08555bad}</Project>
-      <Name>VsChromium.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
