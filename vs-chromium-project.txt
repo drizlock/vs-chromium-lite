@@ -1,0 +1,30 @@
+[SourceExplorer.ignore]
+.git/
+*.sdf
+*.opensdf
+*.suo
+*.csproj
+*.vcxproj
+
+
+[SearchableFiles.ignore]
+Binaries/
+obj/
+Debug/
+x64/
+*.png
+*.ico
+*.ipch
+*.pch
+*.dll
+*.pdb
+*.user
+
+[SearchableFiles.include]
+*
+
+[Properties]
+# The RootDepth property moves the root of the project forward from the location of the project file based on the path used to locate it
+# Example: If the solution is located at c:/myprojects/project1/project1.sln but vs-chromium-project.txt is located at
+#  c:/myprojects/vs-chromium-project.txt, a RootDepth of 1 would load the project root path at c:/myprojects/project1/
+# RootDepth = 1

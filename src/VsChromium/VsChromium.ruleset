@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Rules for VsChromium" Description="Code analysis rules for VsChromium.csproj." ToolsVersion="17.0">
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1001" Action="Warning" />
+    <Rule Id="CA1821" Action="Warning" />
+    <Rule Id="CA2213" Action="Warning" />
+    <Rule Id="CA2231" Action="Warning" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.VisualStudio.Threading.Analyzers.CSharp" RuleNamespace="Microsoft.VisualStudio.Threading.Analyzers.CSharp">
+    <Rule Id="VSTHRD011" Action="None" />
+  </Rules>
+</RuleSet>
