@@ -24,7 +24,6 @@ using VsChromium.Core.Logging;
 using VsChromium.Core.Threads;
 using VsChromium.Features.BuildOutputAnalyzer;
 using VsChromium.Features.IndexServerInfo;
-using VsChromium.Features.SourceExplorerHierarchy;
 using VsChromium.Package;
 using VsChromium.ServerProxy;
 using VsChromium.Settings;
@@ -42,8 +41,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       public const string SearchFilePaths = "file-names-search";
     }
 
-    private class FlatFileResultPendingLoad
-    {
+    private class FlatFileResultPendingLoad {
       public string Path { get; set; }
       public IEnumerable<FlatFilePositionViewModel> FilePositions { get; set; }
     }
@@ -72,9 +70,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
 
     private long _currentFileSystemTreeVersion = -1;
     private bool _performSearchOnNextRefresh;
-    
-    enum SearchType
-    {
+
+    enum SearchType {
       Invalid,
       Code,
       Files
@@ -319,18 +316,6 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       OpenFileInEditorWithWorker(fileEntry, _ => span);
     }
 
-    /// <summary>
-    /// Navigate to the FileSystemTree directory entry corresponding to
-    /// <paramref name="relativePathEntry"/>. This is a no-op if the FileSystemTree
-    /// is already the currently active ViewModel.
-    /// </summary>
-    public void ShowInSourceExplorer(FileSystemEntryViewModel relativePathEntry) {
-      var path = relativePathEntry.GetFullPath();
-      _eventBus.PostEvent(EventNames.SolutionExplorer.ShowFile, relativePathEntry, new FilePathEventArgs {
-        FilePath = path
-      });
-    }
-
     public void BringItemViewModelToView(TreeViewItemViewModel item) {
       // We look for the tree view item corresponding to "item", swallowing
       // the "BringIntoView" request to avoid flickering as we descend into
@@ -383,7 +368,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
           return true;
         }
       }
-      
+
       {
         var flatFileEntry = tvi as FlatFilePositionViewModel;
         if (flatFileEntry != null) {
@@ -504,8 +489,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
     }
 
     private void OnFileSystemTreeScanSuccess(FileSystemTree tree) {
-      switch (_performSearchOnLoad)
-      {
+      switch (_performSearchOnLoad) {
         case SearchType.Files:
           QuickFilePaths(_cachedSearchPattern);
           _performSearchOnLoad = SearchType.Invalid;
@@ -531,7 +515,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
 
         RefreshView(tree.Version);
         FetchDatabaseStatistics();
-      } else {
+      }
+      else {
         var items = CreateInfromationMessages(
           "Open a source file from a local Chromium enlistment or" + "\r\n" +
           string.Format("from a directory containing a \"{0}\" file.", ConfigurationFileNames.ProjectFileName));
@@ -572,7 +557,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       if (_performSearchOnNextRefresh) {
         _performSearchOnNextRefresh = false;
         PerformSearch(true);
-      } else {
+      }
+      else {
         // Add top level nodes in search results explaining results may be outdated
         AddResultsOutdatedMessage();
       }
@@ -663,7 +649,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
         if (fileEntry != null && searchInfo.LineNumber >= 0)
           fileEntry.SetLineColumn(searchInfo.LineNumber, searchInfo.ColumnNumber);
       };
-      
+
       var flattenResults = ViewModel.FlattenSearchResults;
       var rootNode = new RootTreeViewItemViewModel(StandarImageSourceFactory);
       var result = Enumerable
@@ -694,22 +680,17 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       result.ForAll(rootNode.AddChild);
       TreeViewItemViewModel.ExpandNodes(result, expandAll);
 
-      if (flattenResults)
-      {
-        lock (_flatResultsPendingLoadLock)
-        {
-          if (fileSystemEntryCollections.Any())
-          {
+      if (flattenResults) {
+        lock (_flatResultsPendingLoadLock) {
+          if (fileSystemEntryCollections.Any()) {
             _flatResultsPendingLoad = new Queue<FlatFileResultPendingLoad>(
             fileSystemEntryCollections.Single().Select(
-              entryCollection => new FlatFileResultPendingLoad
-              {
+              entryCollection => new FlatFileResultPendingLoad {
                 Path = entryCollection.First().GetFullPath(),
                 FilePositions = entryCollection.Cast<FlatFilePositionViewModel>()
               }));
           }
-          else
-          {
+          else {
             _flatResultsPendingLoad = new Queue<FlatFileResultPendingLoad>();
           }
 
@@ -731,7 +712,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
           null,
           errorResponse.GetBaseError().Message);
         messages.Add(rootError);
-      } else {
+      }
+      else {
         var message = ViewModel.ServerHasStarted
           ? "There was an issue sending a request to the index server."
           : "There was an issue starting the index server.";
@@ -803,7 +785,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       ViewModel.ServerStatusToolTipText = _showServerInfoService.GetIndexingServerStatusToolTipText(response);
     }
 
-    private string PreproccessFilePathSearchString(string searchPattern) { 
+    private string PreproccessFilePathSearchString(string searchPattern) {
       if (ViewModel.UseSpaceAsWildcard && searchPattern != null) {
         StringBuilder searchPatternBuilder = new StringBuilder();
         string[] searchTerms = searchPattern.Split(';');
@@ -982,19 +964,18 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       });
     }
 
-    private string PreprocessSearchString(string searchPattern)
-    {
-      if(ViewModel.UseRegex) {
+    private string PreprocessSearchString(string searchPattern) {
+      if (ViewModel.UseRegex) {
         return searchPattern;
       }
 
-      if(ViewModel.UseSpaceAsWildcard) { 
+      if (ViewModel.UseSpaceAsWildcard) {
         string SpaceWildcard = "( |[A-Za-z0-9_:]*)";
         string SpaceWildcardWholeWord = "( |[A-Za-z0-9_]*)";
 
         StringBuilder searchPatternBuilder = new StringBuilder();
         string[] searchTerms = searchPattern.Split(' ');
-        foreach(string searchTerm in searchTerms) {
+        foreach (string searchTerm in searchTerms) {
           if (searchTerm.Length == 0)
             continue;
 
@@ -1168,16 +1149,12 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    private void FlatResultsPendingLoadLoop()
-    {
-      try
-      {
-        while (true)
-        {
+    private void FlatResultsPendingLoadLoop() {
+      try {
+        while (true) {
           _flatResultsPendingLoadEvent.WaitOne();
           bool moreToProcess;
-          lock (_flatResultsPendingLoadLock)
-          {
+          lock (_flatResultsPendingLoadLock) {
             var numberToProcess = Math.Min(
               _flatResultsPendingLoadReinitialized
                 ? _globalSettingsProvider.GlobalSettings.FlatResultsMaxImmediateRequests
@@ -1188,16 +1165,14 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
 
             _flatResultsPendingLoadReinitialized = false;
 
-            for (int i = 0; i < numberToProcess; ++i)
-            {
+            for (int i = 0; i < numberToProcess; ++i) {
               var resultPendingLoad = _flatResultsPendingLoad.Dequeue();
 
               FlatFilePositionViewModel.LoadFileExtracts(this, resultPendingLoad.Path, resultPendingLoad.FilePositions);
             }
           }
 
-          if (moreToProcess)
-          {
+          if (moreToProcess) {
             int flatResultsRequestsPerSecond = Math.Max(_globalSettingsProvider.GlobalSettings.FlatResultsRequestsPerSecond, 1);
 
             Thread.Sleep(TimeSpan.FromSeconds(1.0 / flatResultsRequestsPerSecond));
@@ -1205,8 +1180,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
           }
         }
       }
-      catch (Exception e)
-      {
+      catch (Exception e) {
         Logger.LogError(e, "Error in FlatResultsPendingLoadLoop.");
       }
     }

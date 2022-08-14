@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+using Microsoft.VisualStudio.ComponentModelHost;
+using Microsoft.VisualStudio.Shell;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Microsoft.VisualStudio.ComponentModelHost;
-using Microsoft.VisualStudio.Shell;
 using VsChromium.Core.Logging;
 using VsChromium.Core.Utility;
 using VsChromium.Package;
@@ -100,7 +100,7 @@ namespace VsChromium.ToolsOptions {
     [Category(CodeSearchUserInterfaceCategory)]
     [DisplayName("Display font")]
     [Description("Font used to display entries in the Code Search tool window.")]
-    [DefaultValue(typeof (Font), "Segoe UI, 12pt")]
+    [DefaultValue(typeof(Font), "Segoe UI, 12pt")]
     public Font DisplayFont {
       get { return _displayFont; }
       set {
@@ -201,11 +201,5 @@ namespace VsChromium.ToolsOptions {
     [Description("Extract line and column info from \"File Paths\" search text, for example \"foo/bar/foo.txt(19,18)\"")]
     [DefaultValue(true)]
     public bool SearchUnderstandBuildOutputPaths { get; set; }
-
-    [Category("Solution Explorer Integration")]
-    [DisplayName("Enable \"Source Explorer\" entries in Solution Explorer")]
-    [Description("Show the list of indexed files and directories in Solution Explorer under one or more \"Source Explorer\" entries")]
-    [DefaultValue(true)]
-    public bool EnableSourceExplorerHierarchy { get; set; }
   }
 }

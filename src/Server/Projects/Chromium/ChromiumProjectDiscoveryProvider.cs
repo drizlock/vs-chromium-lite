@@ -41,7 +41,7 @@ namespace VsChromium.Server.Projects.Chromium {
 
     private Project CreateProject(FullPath rootPath) {
       var configurationProvider = _configurationSectionProvider;
-      var ignorePathsSection = ConfigurationSectionContents.Create(configurationProvider, ConfigurationSectionNames.SourceExplorerIgnoreObsolete);
+      var ignorePathsSection = ConfigurationSectionContents.Create(configurationProvider, "");
       var ignoreSearchableFilesSection = ConfigurationSectionContents.Create(configurationProvider, ConfigurationSectionNames.SearchableFilesIgnore);
       var includeSearchableFilesSection = ConfigurationSectionContents.Create(configurationProvider, ConfigurationSectionNames.SearchableFilesInclude);
       var fileFilter = new FileFilter(ignorePathsSection);

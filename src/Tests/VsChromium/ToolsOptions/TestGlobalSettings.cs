@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-using System;
-using System.Collections.Concurrent;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Concurrent;
 using VsChromium.Package;
 using VsChromium.Settings;
 using VsChromium.Threads;
@@ -19,12 +19,6 @@ namespace VsChromium.Tests.VsChromium.ToolsOptions {
       var provider = new GlobalSettingsProvider(
         new ToolsOptionsPageProviderMock(),
         new DispatchThreadEventBus(new MyProvider()));
-
-      // Force reading settings from empty tools|options pages.
-      var x = provider.GlobalSettings.EnableSourceExplorerHierarchy;
-
-      // Force writing settings to tools|options page.
-      provider.GlobalSettings.EnableSourceExplorerHierarchy = !x;
     }
 
     [TestMethod]
@@ -37,9 +31,9 @@ namespace VsChromium.Tests.VsChromium.ToolsOptions {
     }
 
     public class ToolsOptionsPageProviderMock : IToolsOptionsPageProvider {
-      private readonly ConcurrentDictionary<Type, object> _objects  = new ConcurrentDictionary<Type, object>(); 
+      private readonly ConcurrentDictionary<Type, object> _objects = new ConcurrentDictionary<Type, object>();
       public T GetToolsOptionsPage<T>() where T : DialogPage, new() {
-        return (T)_objects.GetOrAdd(typeof (T), key => new T());
+        return (T)_objects.GetOrAdd(typeof(T), key => new T());
       }
     }
 

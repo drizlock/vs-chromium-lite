@@ -8,7 +8,6 @@ using VsChromium.Core.Utility;
 
 namespace VsChromium.Settings {
   public class GlobalSettings : INotifyPropertyChanged {
-    private bool _enableSourceExplorerHierarchy;
     private int _maxTextExtractLength;
     private int _searchFilePathsMaxResults;
     private int _searchCodeMaxResults;
@@ -49,17 +48,6 @@ namespace VsChromium.Settings {
       if (value > max)
         return max;
       return value;
-    }
-
-    public bool EnableSourceExplorerHierarchy {
-      get { return _enableSourceExplorerHierarchy; }
-      set {
-        if (value == _enableSourceExplorerHierarchy)
-          return;
-
-        _enableSourceExplorerHierarchy = value;
-        OnPropertyChanged(ReflectionUtils.GetPropertyName(this, x=> x.EnableSourceExplorerHierarchy));
-      }
     }
 
     public int MaxTextExtractLength {
@@ -146,7 +134,7 @@ namespace VsChromium.Settings {
       }
     }
 
-    public bool FlattenSearchResults { 
+    public bool FlattenSearchResults {
       get { return _flattenSearchResults; }
       set {
         if (value == _flattenSearchResults)
@@ -158,11 +146,9 @@ namespace VsChromium.Settings {
     }
 
 
-    public int FlatResultsMaxImmediateRequests
-    {
+    public int FlatResultsMaxImmediateRequests {
       get { return _flatResultsMaxImmediateRequests; }
-      set
-      {
+      set {
         if (value == _flatResultsMaxImmediateRequests)
           return;
 
@@ -173,11 +159,9 @@ namespace VsChromium.Settings {
 
 
 
-    public int FlatResultsRequestsPerSecond
-    {
+    public int FlatResultsRequestsPerSecond {
       get { return _flatResultsRequestsPerSecond; }
-      set
-      {
+      set {
         if (value == _flatResultsRequestsPerSecond)
           return;
 
@@ -188,7 +172,7 @@ namespace VsChromium.Settings {
 
 
 
-    public bool DisplayRelativePath { 
+    public bool DisplayRelativePath {
       get { return _displayRelativePath; }
       set {
         if (value == _displayRelativePath)

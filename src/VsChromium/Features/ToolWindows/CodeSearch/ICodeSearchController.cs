@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-using System;
 using Microsoft.VisualStudio.Text;
+using System;
 using VsChromium.Core.Ipc;
 using VsChromium.Core.Ipc.TypedMessages;
 using VsChromium.Settings;
@@ -37,7 +37,6 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
     void OpenFileInEditor(IFileEntryViewModel fileEntry, int lineNumber, int columnNumber, int length);
     void OpenFileInEditorWith(IFileEntryViewModel fileEntry, Span? span);
     void OpenFileInEditorWith(IFileEntryViewModel fileEntry, int lineNumber, int columnNumber, int length);
-    void ShowInSourceExplorer(FileSystemEntryViewModel relativePathEntry);
     void BringItemViewModelToView(TreeViewItemViewModel item);
     bool ExecuteOpenCommandForItem(TreeViewItemViewModel item);
 

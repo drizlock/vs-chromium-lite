@@ -158,41 +158,9 @@
     <Compile Include="Features\QuickSearch\QuickSearchCodeHandler.cs" />
     <Compile Include="Features\QuickSearch\SelectionHelpers.cs" />
     <Compile Include="Features\IndexServerInfo\DirectoryDetailsViewModel.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\FilePathEventArgs.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\IIncrementalHierarchyBuilder.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\IncrementalBuildResult.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\DirectoryNodeViewModel.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\FileNodeViewModel.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\IncrementalHierarchyBuilder.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\IncrementalHierarchyBuilderAggregate.cs" />
     <Compile Include="Features\IndexServerInfo\DirectoryDetailsDialog.xaml.cs">
       <DependentUpon>DirectoryDetailsDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\SourceExplorerHierarchy\INodeTemplateFactory.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\INodeViewModelLoader.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\ISourceExplorerHierarchyController.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\ISourceExplorerHierarchyControllerFactory.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\IVsGlyphService.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\IVsHierarchyImpl.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\IVsSolutionEventsHandler.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\LoadChildrenResult.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\NodeTemplateFactory.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\NodeViewModelLoader.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\NodeViewModelTemplate.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\RootNodeViewModel.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\SolutionExplorerHierarchyInitializer.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\SourceExplorerHierarchyController.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\SourceExplorerHierarchyControllerFactory.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsGlyphService.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsHierarchyAggregate.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsHierarchyChanges.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsHierarchyCommandHandler.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsHierarchyLogger.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsHierarchyNodes.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsHierarchy.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\NodeViewModel.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsHierarchyUtilities.cs" />
-    <Compile Include="Features\SourceExplorerHierarchy\VsSolutionEventsHandler.cs" />
     <Compile Include="Features\ToolWindows\BuildExplorer\BuildExplorerControl.xaml.cs">
       <DependentUpon>BuildExplorerControl.xaml</DependentUpon>
     </Compile>
@@ -321,7 +289,6 @@
     <Compile Include="Package\IVisualStudioPackageProvider.cs" />
     <Compile Include="Package\VisualStudioPackageInitialize.cs" />
     <Compile Include="Package\VisualStudioPackageProvider.cs" />
-    <Compile Include="Features\ToolWindows\CodeSearch\ShowSourceExplorerCommandHandler.cs" />
     <Compile Include="Features\FormatComment\CommentFormatter.cs" />
     <Compile Include="Package\CommandHandler\IPackageCommandHandler.cs" />
     <Compile Include="Package\CommandHandler\PackageCommandHandlerRegistration.cs" />
@@ -483,12 +450,6 @@
     <Content Include="$(OutputPath)\VsChromium.vsdconfig">
       <Link>VsChromium.vsdconfig</Link>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-      <VSIXSubPath>.</VSIXSubPath>
-    </Content>
-    <Content Include="$(BuildRoot)src\DkmIntegration\Visualizers\Visualizers.natvis">
-      <Link>Visualizers.natvis</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
       <VSIXSubPath>.</VSIXSubPath>
     </Content>

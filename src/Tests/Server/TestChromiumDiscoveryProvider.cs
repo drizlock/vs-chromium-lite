@@ -48,7 +48,6 @@ namespace VsChromium.Tests.Server {
 
       // Add configuration directory
       AddConfigFile(fileSystem, ConfigurationFileNames.ChromiumEnlistmentDetectionPatterns);
-      AddConfigFile(fileSystem, ConfigurationSectionNames.SourceExplorerIgnoreObsolete);
       AddConfigFile(fileSystem, ConfigurationSectionNames.SearchableFilesIgnore);
       AddConfigFile(fileSystem, ConfigurationSectionNames.SearchableFilesInclude);
 

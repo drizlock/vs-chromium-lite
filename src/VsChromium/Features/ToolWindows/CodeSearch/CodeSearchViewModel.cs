@@ -89,7 +89,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
         return DisplayKind.InformationMessages;
       }
     }
-    
+
     public bool DisplayRelativePath {
       get { return _displayRelativePath; }
       set {
@@ -241,8 +241,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
     /// <summary>
     /// Databound!
     /// </summary>
-    public string UseSpaceAsWildcardToolTip
-    {
+    public string UseSpaceAsWildcardToolTip {
       get {
         return string.Format(
           "Toggle using space as a wildcard in code and file searches. " +
@@ -403,8 +402,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
     /// <summary>
     /// Databound!
     /// </summary>
-    public string HorizontalSearchLayoutToolTip
-    {
+    public string HorizontalSearchLayoutToolTip {
       get {
         return string.Format(
           "Toggle putting the code and file search boxes on the same line. " +
@@ -628,10 +626,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       OnPropertyChanged(ReflectionUtils.GetPropertyName(this, x => x.RefreshSearchResultsEnabled));
     }
 
-    public ICommand ListOpenCommand
-    {
-      get
-      {
+    public ICommand ListOpenCommand {
+      get {
         return CommandDelegate.Create(sender => {
           foreach (FlatFilePositionViewModel node in RootNodes.Where(x => x.IsSelected).OfType<FlatFilePositionViewModel>().Reverse()) {
             node.OpenCommand.Execute(node);
@@ -643,10 +639,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public ICommand ListOpenWithCommand
-    {
-      get
-      {
+    public ICommand ListOpenWithCommand {
+      get {
         return CommandDelegate.Create(sender => {
           foreach (FlatFilePositionViewModel node in RootNodes.Where(x => x.IsSelected).OfType<FlatFilePositionViewModel>().Reverse()) {
             node.OpenWithCommand.Execute(node);
@@ -655,48 +649,28 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public ICommand ListShowInSourceExplorerCommand
-    {
-      get
-      {
+    public ICommand ListOpenContainingFolderCommand {
+      get {
         return CommandDelegate.Create(sender => {
-          foreach (FlatFilePositionViewModel node in RootNodes.Where(x => x.IsSelected).OfType<FlatFilePositionViewModel>().Reverse())
-          {
-            node.ShowInSourceExplorerCommand.Execute(node);
-          }
-        });
-      }
-    }
-
-    public ICommand ListOpenContainingFolderCommand
-    {
-      get
-      {
-        return CommandDelegate.Create(sender => {
-          foreach (FlatFilePositionViewModel node in RootNodes.Where(x => x.IsSelected).OfType<FlatFilePositionViewModel>().Reverse())
-          {
+          foreach (FlatFilePositionViewModel node in RootNodes.Where(x => x.IsSelected).OfType<FlatFilePositionViewModel>().Reverse()) {
             node.OpenContainingFolderCommand.Execute(node);
           }
         });
       }
     }
 
-    public ICommand ListCopyCommand
-    {
-      get
-      {
+    public ICommand ListCopyCommand {
+      get {
         return CommandDelegate.Create(sender => {
           ICodeSearchController Controller = RootNodes.OfType<FlatFilePositionViewModel>().FirstOrDefault()?.Controller;
-          if(Controller != null)
+          if (Controller != null)
             Controller.Clipboard.SetText(string.Join(Environment.NewLine, RootNodes.Where(x => x.IsSelected).OfType<FlatFilePositionViewModel>().Select(x => x.CopyPathAndText)));
         });
       }
     }
 
-    public ICommand ListCopyTextCommand
-    {
-      get
-      {
+    public ICommand ListCopyTextCommand {
+      get {
         return CommandDelegate.Create(sender => {
           ICodeSearchController Controller = RootNodes.OfType<FlatFilePositionViewModel>().FirstOrDefault()?.Controller;
           if (Controller != null)
@@ -705,10 +679,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public ICommand ListCopyFullPathCommand
-    {
-      get
-      {
+    public ICommand ListCopyFullPathCommand {
+      get {
         return CommandDelegate.Create(sender => {
           ICodeSearchController Controller = RootNodes.OfType<FlatFilePositionViewModel>().FirstOrDefault()?.Controller;
           if (Controller != null)
@@ -717,10 +689,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public ICommand ListCopyRelativePathCommand
-    {
-      get
-      {
+    public ICommand ListCopyRelativePathCommand {
+      get {
         return CommandDelegate.Create(sender => {
           ICodeSearchController Controller = RootNodes.OfType<FlatFilePositionViewModel>().FirstOrDefault()?.Controller;
           if (Controller != null)
@@ -729,10 +699,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public ICommand ListCopyFullPathPosixCommand
-    {
-      get
-      {
+    public ICommand ListCopyFullPathPosixCommand {
+      get {
         return CommandDelegate.Create(sender => {
           ICodeSearchController Controller = RootNodes.OfType<FlatFilePositionViewModel>().FirstOrDefault()?.Controller;
           if (Controller != null)
@@ -741,10 +709,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public ICommand ListCopyRelativePathPosixCommand
-    {
-      get
-      {
+    public ICommand ListCopyRelativePathPosixCommand {
+      get {
         return CommandDelegate.Create(sender => {
           ICodeSearchController Controller = RootNodes.OfType<FlatFilePositionViewModel>().FirstOrDefault()?.Controller;
           if (Controller != null)

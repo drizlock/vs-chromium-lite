@@ -18,9 +18,9 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
     private readonly Lazy<IList<TreeViewItemViewModel>> _children;
 
     public DirectoryEntryViewModel(
-      ICodeSearchController controller, 
-      TreeViewItemViewModel parentViewModel, 
-      DirectoryEntry directoryEntry, 
+      ICodeSearchController controller,
+      TreeViewItemViewModel parentViewModel,
+      DirectoryEntry directoryEntry,
       Action<FileSystemEntryViewModel> postCreate)
       : base(controller, parentViewModel, directoryEntry.Entries.Count > 0) {
       _directoryEntry = directoryEntry;
@@ -66,7 +66,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
 
     public ICommand OpenCommand {
       get {
-        return CommandDelegate.Create(sender => Controller.ShowInSourceExplorer(this));
+        return null; //CommandDelegate.Create(sender => Controller.ShowInSourceExplorer(this));
       }
     }
 

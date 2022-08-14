@@ -24,7 +24,6 @@ using VsChromium.Core.Logging;
 using VsChromium.Core.Threads;
 using VsChromium.Features.BuildOutputAnalyzer;
 using VsChromium.Features.IndexServerInfo;
-using VsChromium.Features.SourceExplorerHierarchy;
 using VsChromium.Package;
 using VsChromium.ServerProxy;
 using VsChromium.Settings;
@@ -219,30 +218,37 @@ namespace VsChromium.Features.ToolWindows.OpenFile {
         // Note: Having a single ID for all searches ensures previous search
         // requests are superseeded.
         Id = "MetaSearch",
-        Request = new SearchFilePathsRequest { SearchParams = new SearchParams {
-          SearchString = processedSearchPattern,
-          MaxResults = 200, // TM_TODO
-          MatchCase = false,
-          MatchWholeWord = false,
-          IncludeSymLinks = true,
-          UseRe2Engine = true,
-          Regex = false,
-        } },
-        Delay = TimeSpan.FromMilliseconds(immediate ? 0 : GlobalSettings.AutoSearchDelayMsec), OnThreadPoolSend = () => { sw.Start(); }, OnThreadPoolReceive = () => { sw.Stop(); }, OnDispatchThreadSuccess = typedResponse => {
+        Request = new SearchFilePathsRequest {
+          SearchParams = new SearchParams {
+            SearchString = processedSearchPattern,
+            MaxResults = 200, // TM_TODO
+            MatchCase = false,
+            MatchWholeWord = false,
+            IncludeSymLinks = true,
+            UseRe2Engine = true,
+            Regex = false,
+          }
+        },
+        Delay = TimeSpan.FromMilliseconds(immediate ? 0 : GlobalSettings.AutoSearchDelayMsec),
+        OnThreadPoolSend = () => { sw.Start(); },
+        OnThreadPoolReceive = () => { sw.Stop(); },
+        OnDispatchThreadSuccess = typedResponse => {
           if (cancellationToken.IsCancellationRequested)
             return;
-            var response = ((SearchFilePathsResponse)typedResponse);
-            var msg = string.Format("Found {0:n0} path(s) among {1:n0} ({2:0.00} seconds) matching pattern \"{3}\"",
-              response.HitCount,
-              response.TotalCount,
-              sw.Elapsed.TotalSeconds,
-              processedSearchPattern);
-            var viewModel = CreateSearchFilePathsResult(response.SearchResult, msg, "", true);
-            ViewModel.UpdateFileList(viewModel);
-            _control.UpdateSelection();
-        }, OnDispatchThreadError = errorResponse => {
+          var response = ((SearchFilePathsResponse)typedResponse);
+          var msg = string.Format("Found {0:n0} path(s) among {1:n0} ({2:0.00} seconds) matching pattern \"{3}\"",
+            response.HitCount,
+            response.TotalCount,
+            sw.Elapsed.TotalSeconds,
+            processedSearchPattern);
+          var viewModel = CreateSearchFilePathsResult(response.SearchResult, msg, "", true);
+          ViewModel.UpdateFileList(viewModel);
+          _control.UpdateSelection();
+        },
+        OnDispatchThreadError = errorResponse => {
           if (cancellationToken.IsCancellationRequested)
-            return; }
+            return;
+        }
       };
 
       _dispatchThreadServerRequestExecutor.Post(request);
@@ -273,7 +279,8 @@ namespace VsChromium.Features.ToolWindows.OpenFile {
           }
         }
         return searchPatternBuilder.ToString();
-      } else {
+      }
+      else {
         return searchPattern;
       }
     }

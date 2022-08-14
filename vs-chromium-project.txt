@@ -1,12 +1,3 @@
-[SourceExplorer.ignore]
-.git/
-*.sdf
-*.opensdf
-*.suo
-*.csproj
-*.vcxproj
-
-
 [SearchableFiles.ignore]
 Binaries/
 obj/

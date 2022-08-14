@@ -44,7 +44,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       get {
         if (_lineNumber < 0)
           return "";
-        
+
         if (_columnNumber < 0)
           return string.Format("({0}) ", _lineNumber + 1);
 
@@ -114,14 +114,6 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
     public ICommand OpenContainingFolderCommand {
       get {
         return CommandDelegate.Create(sender => Controller.WindowsExplorer.OpenContainingFolder(this.GetFullPath()));
-      }
-    }
-
-    public ICommand ShowInSourceExplorerCommand {
-      get {
-        return CommandDelegate.Create(
-          sender => Controller.ShowInSourceExplorer(this),
-          sender => Controller.GlobalSettings.EnableSourceExplorerHierarchy);
       }
     }
 

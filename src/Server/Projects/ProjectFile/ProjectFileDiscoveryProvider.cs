@@ -88,10 +88,9 @@ namespace VsChromium.Server.Projects.ProjectFile {
     private Project CreateProject(FullPath rootPath, FullPath searchPath) {
       var projectFilePath = rootPath.Combine(new RelativePath(ConfigurationFileNames.ProjectFileName));
 
-      var ignorePathsSectionName = ConfigurationSectionNames.SourceExplorerIgnore;
+      var ignorePathsSectionName = "";
       if (!_fileSystem.FileExists(projectFilePath)) {
         projectFilePath = rootPath.Combine(new RelativePath(ConfigurationFileNames.ProjectFileNameObsolete));
-        ignorePathsSectionName = ConfigurationSectionNames.SourceExplorerIgnoreObsolete;
         if (!_fileSystem.FileExists(projectFilePath)) {
           return null;
         }
@@ -110,10 +109,10 @@ namespace VsChromium.Server.Projects.ProjectFile {
 
       int rootDepth = 0;
       FullPath modifiedRootPath = rootPath;
-      if (propertyCollection.TryGetInt("RootDepth", out rootDepth) && rootDepth > 0) { 
-          int rootPathDepth = rootPath.ToString().Split(Path.DirectorySeparatorChar).Count();
-          IEnumerable<string> pathComponents = searchPath.ToString().Split(Path.DirectorySeparatorChar);
-          modifiedRootPath = new FullPath(string.Join(Path.DirectorySeparatorChar.ToString(), pathComponents.Take(rootPathDepth + rootDepth)));
+      if (propertyCollection.TryGetInt("RootDepth", out rootDepth) && rootDepth > 0) {
+        int rootPathDepth = rootPath.ToString().Split(Path.DirectorySeparatorChar).Count();
+        IEnumerable<string> pathComponents = searchPath.ToString().Split(Path.DirectorySeparatorChar);
+        modifiedRootPath = new FullPath(string.Join(Path.DirectorySeparatorChar.ToString(), pathComponents.Take(rootPathDepth + rootDepth)));
       }
 
       return new Project(modifiedRootPath, ignorePathsSection, ignoreSearchableFilesSection, includeSearchableFilesSection, fileFilter, directoryFilter, searchableFilesFilter, fileWithSections.Hash);

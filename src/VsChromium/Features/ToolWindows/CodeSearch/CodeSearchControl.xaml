@@ -402,7 +402,6 @@
           <ContextMenu>
             <MenuItem Header="Open" Command="{Binding ListOpenCommand}" FontWeight="Bold" InputGestureText="Enter"/>
             <MenuItem Header="Open With..." Command="{Binding ListOpenWithCommand}" />
-            <MenuItem Header="Show in Solution Explorer" Command="{Binding ListShowInSourceExplorerCommand}" />
             <MenuItem Header="Open Containing Folder" Command="{Binding ListOpenContainingFolderCommand}" />
             <Separator />
             <MenuItem Header="Copy" Command="{Binding ListCopyCommand}" InputGestureText="Ctrl+C"/>
@@ -681,7 +680,6 @@
                 <ContextMenu>
                   <MenuItem Header="Open" Command="{Binding OpenCommand}" FontWeight="Bold" />
                   <MenuItem Header="Open With..." Command="{Binding OpenWithCommand}" />
-                  <MenuItem Header="Show in Solution Explorer" Command="{Binding ShowInSourceExplorerCommand}" />
                   <MenuItem Header="Open Containing Folder" Command="{Binding OpenContainingFolderCommand}" />
                   <Separator />
                   <MenuItem Header="Copy Full Path" Command="{Binding CopyFullPathCommand}" />

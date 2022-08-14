@@ -59,12 +59,6 @@ namespace VsChromium.Tests.Server {
         .Parent
         .AddFile(ConfigurationFileNames.ProjectFileName,
 @"
-[SourceExplorer.ignore]
-.git/
-*.sdf
-*.opensdf
-*.suo
-
 [SearchableFiles.ignore]
 Binaries/
 obj/

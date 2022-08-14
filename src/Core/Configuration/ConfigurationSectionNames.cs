@@ -9,9 +9,7 @@ namespace VsChromium.Core.Configuration {
   /// </summary>
   public static class ConfigurationSectionNames {
     public static readonly string Properties = "Properties";
-    public static readonly string SourceExplorerIgnore = "SourceExplorer.ignore";
     public static readonly string SearchableFilesIgnore = "SearchableFiles.ignore";
     public static readonly string SearchableFilesInclude = "SearchableFiles.include";
-    public static readonly string SourceExplorerIgnoreObsolete = "ChromiumExplorer.ignore";
   }
 }

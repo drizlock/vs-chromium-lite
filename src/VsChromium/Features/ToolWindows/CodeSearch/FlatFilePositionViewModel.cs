@@ -38,13 +38,13 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
 
     public override string DisplayText {
       get {
-        if(Controller.GlobalSettings.DisplayRelativePath) { 
+        if (Controller.GlobalSettings.DisplayRelativePath) {
           if (_extractPosition == null)
             return _fileEntry.Name;
 
           return string.Format("{0}({1}): ", GetRelativePath(), _extractPosition.LineNumber + 1);
         }
-        else { 
+        else {
           if (_extractPosition == null)
             return PathHelpers.CombinePaths(_directoryEntry?.Name, _fileEntry.Name);
 
@@ -53,39 +53,39 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public string CopyPathAndText { 
+    public string CopyPathAndText {
       get {
-        if(Controller.GlobalSettings.DisplayRelativePath) { 
+        if (Controller.GlobalSettings.DisplayRelativePath) {
           if (_extractPosition == null) {
-              return string.Format("{0}{1}", GetRelativePath(), LineColumnText);
+            return string.Format("{0}{1}", GetRelativePath(), LineColumnText);
           }
-        
+
           return string.Format("{0}({1}): {2}", GetRelativePath(), _extractPosition.LineNumber + 1, _extractPosition.Text.TrimEnd(Environment.NewLine.ToArray()));
         }
-        else { 
+        else {
           if (_extractPosition == null) {
-              return string.Format("{0}{1}", GetFullPath(), LineColumnText);
+            return string.Format("{0}{1}", GetFullPath(), LineColumnText);
           }
-        
+
           return string.Format("{0}({1}): {2}", GetFullPath(), _extractPosition.LineNumber + 1, _extractPosition.Text.TrimEnd(Environment.NewLine.ToArray()));
         }
       }
     }
 
-    public string CopyText { 
+    public string CopyText {
       get {
-        if(Controller.GlobalSettings.DisplayRelativePath) { 
+        if (Controller.GlobalSettings.DisplayRelativePath) {
           if (_extractPosition == null) {
-              return string.Format("{0}{1}", GetRelativePath(), LineColumnText);
+            return string.Format("{0}{1}", GetRelativePath(), LineColumnText);
           }
-        
+
           return string.Format("{0}", _extractPosition.Text.Trim(Environment.NewLine.ToArray()));
         }
-        else { 
+        else {
           if (_extractPosition == null) {
-              return string.Format("{0}{1}", GetFullPath(), LineColumnText);
+            return string.Format("{0}{1}", GetFullPath(), LineColumnText);
           }
-        
+
           return string.Format("{0}", _extractPosition.Text.TrimEnd(Environment.NewLine.ToArray()));
         }
       }
@@ -104,7 +104,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       get {
         if (_lineNumber < 0)
           return "";
-        
+
         if (_columnNumber < 0)
           return string.Format("({0})", _lineNumber + 1);
 
@@ -171,7 +171,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
           if (_extractPosition != null) {
             Controller.OpenFileInEditor(this, _extractPosition.LineNumber, _extractPosition.ColumnNumber, Length);
           }
-          else if(_matchPosition != null) {
+          else if (_matchPosition != null) {
             Controller.OpenFileInEditor(this, new Span(Position, Length));
           }
           else {
@@ -187,7 +187,7 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
           if (_extractPosition != null) {
             Controller.OpenFileInEditorWith(this, _extractPosition.LineNumber, _extractPosition.ColumnNumber, Length);
           }
-          else if(_matchPosition != null) {
+          else if (_matchPosition != null) {
             Controller.OpenFileInEditorWith(this, new Span(Position, Length));
           }
           else {
@@ -233,16 +233,8 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       }
     }
 
-    public ICommand ShowInSourceExplorerCommand {
-      get {
-        return CommandDelegate.Create(
-          sender => Controller.ShowInSourceExplorer(this),
-          sender => Controller.GlobalSettings.EnableSourceExplorerHierarchy);
-      }
-    }
-
     #endregion
-    
+
     public override string GetFullPath() {
       return PathHelpers.CombinePaths(_directoryEntry?.Name, _fileEntry.Name);
     }
@@ -265,27 +257,23 @@ namespace VsChromium.Features.ToolWindows.CodeSearch {
       OnPropertyChanged(ReflectionUtils.GetPropertyName(this, x => x.TextAfterMatch));
     }
 
-    public static void LoadFileExtracts(ICodeSearchController host, string path, IEnumerable<FlatFilePositionViewModel> filePositions)
-    {
+    public static void LoadFileExtracts(ICodeSearchController host, string path, IEnumerable<FlatFilePositionViewModel> filePositions) {
       var positions = filePositions.ToList();
       if (!positions.Any())
         return;
 
-      var request = new GetFileExtractsRequest
-      {
+      var request = new GetFileExtractsRequest {
         FileName = path,
         MaxExtractLength = host.GlobalSettings.MaxTextExtractLength,
         Positions = positions
-          .Select(x => new FilePositionSpan
-          {
+          .Select(x => new FilePositionSpan {
             Position = x.Position,
             Length = x.Length
           })
           .ToList()
       };
 
-      var uiRequest = new DispatchThreadServerRequest
-      {
+      var uiRequest = new DispatchThreadServerRequest {
         Request = request,
         Id = "FlatFilePositionViewModel-" + path,
         Delay = TimeSpan.FromSeconds(0.0),
