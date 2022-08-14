@@ -351,30 +351,6 @@
           <LocCanonicalName>VsChromium.GotoPreviousLocation</LocCanonicalName>
         </Strings>
       </Button>
-      <Button guid="guidChromeDebugCmdSet" id="cmdidAttachToChromeDialog" priority="0x0002" type="Button">
-        <Parent guid="guidChromeDebugCmdSet" id="ChromeDebugMenuGroup" />
-        <Icon guid="guidPackageChromeDebugImages" id="bmpAttachChoose" />
-        <Strings>
-          <CommandName>Chrome Debug: Open "Attach To Chrome" dialog</CommandName>
-          <ButtonText>Choose...</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidChromeDebugCmdSet" id="cmdidAttachToAllChromes" priority="0x0000" type="Button">
-        <Parent guid="guidChromeDebugCmdSet" id="ChromeDebugMenuGroup" />
-        <Icon guid="guidPackageChromeDebugImages" id="bmpAttachAll" />
-        <Strings>
-          <CommandName>Chrome Debug: Attach to all running Chrome processes</CommandName>
-          <ButtonText>All Running Processes</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidChromeDebugCmdSet" id="cmdidAttachToChromeTree" priority="0x0001" type="Button">
-        <Parent guid="guidChromeDebugCmdSet" id="ChromeDebugMenuGroup" />
-        <Icon guid="guidPackageChromeDebugImages" id="bmpAttachDescendants" />
-        <Strings>
-          <CommandName>Chrome Debug: Attach to descendants of current debug session</CommandName>
-          <ButtonText>Descendants of Current Debug Session</ButtonText>
-        </Strings>
-      </Button>
     </Buttons>
     <Bitmaps>
       <Bitmap guid="guidImages" href="Resources\Images_32bit.bmp" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows" />
@@ -451,9 +427,6 @@
       <IDSymbol name="ChromeDebugTopLevelMenuGroup" value="0x0101" />
       <IDSymbol name="ChromeDebugMenu" value="0x0102" />
       <IDSymbol name="ChromeDebugMenuGroup" value="0x0103" />
-      <IDSymbol name="cmdidAttachToAllChromes" value="0x0200" />
-      <IDSymbol name="cmdidAttachToChromeTree" value="0x0201" />
-      <IDSymbol name="cmdidAttachToChromeDialog" value="0x0202" />
     </GuidSymbol>
     <GuidSymbol name="guidImages" value="{80c1b9c8-d097-4934-aa9c-e5ad6bc2408d}">
       <IDSymbol name="bmpPic1" value="1" />
