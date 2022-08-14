@@ -4,7 +4,6 @@
 
 namespace VsChromium.Commands {
   public enum PkgCmdIdList {
-    CmdidFormatComment = 0x100,
     CmdidCodeSearchToolWindow = 0x101,
     CmdidSearchFilePaths = 0x102,
     CmdidQuickSearchFilePaths = 0x108,

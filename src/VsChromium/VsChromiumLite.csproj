@@ -119,15 +119,7 @@
     <Compile Include="Features\AutoUpdate\UpdateInfo.cs" />
     <Compile Include="Features\AutoUpdate\UpdateNotificationListener.cs" />
     <Compile Include="Features\BuildOutputAnalyzer\BuildOutputClassifierConstants.cs" />
-    <Compile Include="ChromiumEnlistment\ChromiumSourceFiles.cs" />
-    <Compile Include="ChromiumEnlistment\IChromiumSourceFiles.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\ChromiumStyleClassifierConstants.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\ChromiumStyleClassificationType.cs" />
     <Compile Include="Features\BuildOutputAnalyzer\BuildOutputClassificationType.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\ChromiumStyleClassificationDefinition.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\ChromiumStyleClassifier.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\ChromiumStyleClassifierProvider.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\ChromiumSourceFilesExtensions.cs" />
     <Compile Include="Features\AutoUpdate\IPackageVersionProvider.cs" />
     <Compile Include="Features\AutoUpdate\IUpdateInfoProvider.cs" />
     <Compile Include="Features\AutoUpdate\PackageVersionProvider.cs" />
@@ -279,17 +271,12 @@
     <Compile Include="Features\ToolWindows\CodeSearch\SearchCodeCommandHandler.cs" />
     <Compile Include="Features\ToolWindows\CodeSearch\SearchFilePathsCommandHandler.cs" />
     <Compile Include="Views\FileRegistrationRequestService.cs" />
-    <Compile Include="Features\FormatComment\CommentType.cs" />
-    <Compile Include="Features\FormatComment\ExtendSpanResult.cs" />
-    <Compile Include="Features\FormatComment\FormatLinesResult.cs" />
-    <Compile Include="Features\FormatComment\ICommentFormatter.cs" />
     <Compile Include="Package\PackageInitializerViewHandler.cs" />
     <Compile Include="Package\IPackagePostInitializer.cs" />
     <Compile Include="Package\IPackagePreInitializer.cs" />
     <Compile Include="Package\IVisualStudioPackageProvider.cs" />
     <Compile Include="Package\VisualStudioPackageInitialize.cs" />
     <Compile Include="Package\VisualStudioPackageProvider.cs" />
-    <Compile Include="Features\FormatComment\CommentFormatter.cs" />
     <Compile Include="Package\CommandHandler\IPackageCommandHandler.cs" />
     <Compile Include="Package\CommandHandler\PackageCommandHandlerRegistration.cs" />
     <Compile Include="Package\IVisualStudioPackage.cs" />
@@ -328,7 +315,6 @@
       <DependentUpon>CodeSearchControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\OleCommandTarget.cs" />
-    <Compile Include="Features\FormatComment\FormatCommentHandler.cs" />
     <Compile Include="Commands\ICommandTarget.cs" />
     <Compile Include="Commands\SimpleCommandTarget.cs" />
     <Compile Include="Features\AutoUpdate\UpdateChecker.cs" />
@@ -385,19 +371,9 @@
     <Compile Include="ServerProxy\ServerProcessLauncher.cs" />
     <Compile Include="ServerProxy\ServerProcessProxy.cs" />
     <Compile Include="ServerProxy\TypedRequestProcessProxy.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\AccessorIndentChecker.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\SpaceAfterForKeywordChecker.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\ElseIfOnNewLineChecker.cs" />
     <Compile Include="Views\ViewCreationListener.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\OpenBraceAfterNewLineChecker.cs" />
     <Compile Include="Views\TextLineFragment.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckerError.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\ITextLineChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\TrailingSpacesChecker.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\TabCharacterChecker.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\EndOfLineChecker.cs" />
-    <Compile Include="Features\ChromiumCodingStyleChecker\TextLineCheckers\LongLineChecker.cs" />
     <Compile Include="Views\TextSnapshotLineExtensions.cs" />
     <Compile Include="VsPackage.cs" />
     <Page Include="Features\IndexServerInfo\ServerDetailsDialog.xaml">

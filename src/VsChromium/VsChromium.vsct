@@ -47,15 +47,6 @@
       </Menu>
     </Menus>
     <Buttons>
-      <Button guid="guidVsChromiumCmdSet" id="cmdidFormatComment" priority="0x0100" type="Button">
-        <Parent guid="guidStdEditor" id="IDG_VS_EDITOR_ADVANCED_CMDS" />
-        <CommandFlag>DynamicVisibility</CommandFlag>
-        <CommandFlag>DefaultInvisible</CommandFlag>
-        <Strings>
-          <CommandName>cmdidMFormatComment</CommandName>
-          <ButtonText>Format Comment</ButtonText>
-        </Strings>
-      </Button>
       <Button guid="guidVsChromiumCmdSet" id="cmdidCodeSearchToolWindow" priority="0x0100" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidCodeSearchImages" id="Icon" />
